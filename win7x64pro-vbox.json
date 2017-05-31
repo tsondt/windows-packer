@@ -1,0 +1,29 @@
+{
+  "variables": {
+    "iso_checksum": "0bcfc54019ea175b1ee51f6d2b207a3d14dd2b58",
+    "iso_url": "iso/en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso"
+  },
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "1024"],
+        ["modifyvm", "{{.Name}}", "--vram", "64"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"]
+      ],
+      "guest_os_type": "Windows7_64",
+      "iso_url": "{{ user `iso_url` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "sha1",
+      "communicator": "none",
+      "guest_additions_mode": "disable",
+      "virtualbox_version_file": "",
+      "ssh_skip_nat_mapping":"true",
+      "shutdown_command": "shutdown /s",
+      "shutdown_timeout": "15m",
+      "floppy_files": [
+        "floppy/win7x64pro/Autounattend.xml"
+      ]
+    }
+  ]
+}
