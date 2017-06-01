@@ -1,7 +1,7 @@
 {
   "variables": {
-    "iso_checksum": "0bcfc54019ea175b1ee51f6d2b207a3d14dd2b58",
-    "iso_url": "iso/en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso"
+    "iso_checksum": "bc2f7ff5c91c9f0f8676e39e703085c65072139b",
+    "iso_url": "iso/en_windows_8_1_x64_dvd_2707217.iso"
   },
   "builders": [
     {
@@ -11,7 +11,7 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "1024"
+          "2048"
         ],
         [
           "modifyvm",
@@ -26,7 +26,7 @@
           "1"
         ]
       ],
-      "guest_os_type": "Windows7_64",
+      "guest_os_type": "Windows81_64",
       "iso_url": "{{ user `iso_url` }}",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "sha1",
