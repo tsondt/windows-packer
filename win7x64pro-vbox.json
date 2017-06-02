@@ -36,11 +36,13 @@
       "winrm_timeout": "15m",
       "guest_additions_mode": "disable",
       "virtualbox_version_file": "",
+      "output_directory": "win7x64pro-vbox",
       "keep_registered": "true",
       "floppy_files": [
         "floppy/win7x64pro/Autounattend.xml",
         "floppy/win7x64pro/winrm.ps1",
-        "floppy/win7x64pro/config.bat"
+        "floppy/win7x64pro/config.bat",
+        "floppy/win7x64pro/diskcleanup.bat"
       ]
     }
   ],
@@ -51,7 +53,8 @@
     {
       "type": "windows-shell",
       "inline": [
-        "Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
+        "dism /online /cleanup-image /spsuperseded",
+        "A:\\diskcleanup.bat",
         "shutdown /s"
       ]
     }

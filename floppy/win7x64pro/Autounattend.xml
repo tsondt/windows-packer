@@ -2,14 +2,17 @@
 <unattend xmlns="urn:schemas-microsoft-com:unattend">
   <servicing/>
   <settings pass="windowsPE">
-    <component
-      xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      name="Microsoft-Windows-Setup"
-      processorArchitecture="amd64"
-      publicKeyToken="31bf3856ad364e35"
-      language="neutral"
-      versionScope="nonSxS">
+    <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+      <SetupUILanguage>
+        <UILanguage>en-US</UILanguage>
+      </SetupUILanguage>
+      <InputLocale>en-US</InputLocale>
+      <SystemLocale>en-US</SystemLocale>
+      <UILanguage>en-US</UILanguage>
+      <UILanguageFallback>en-US</UILanguageFallback>
+      <UserLocale>en-US</UserLocale>
+    </component>
+    <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <DiskConfiguration>
         <Disk wcm:action="add">
           <CreatePartitions>
@@ -21,7 +24,6 @@
           </CreatePartitions>
           <ModifyPartitions>
             <ModifyPartition wcm:action="add">
-              <Extend>false</Extend>
               <Format>NTFS</Format>
               <Letter>C</Letter>
               <Order>1</Order>
@@ -34,6 +36,22 @@
         </Disk>
         <WillShowUI>OnError</WillShowUI>
       </DiskConfiguration>
+      <ImageInstall>
+        <OSImage>
+          <InstallFrom>
+            <MetaData wcm:action="add">
+              <Key>/IMAGE/NAME</Key>
+              <Value>Windows 7 Professional</Value>
+            </MetaData>
+          </InstallFrom>
+          <InstallTo>
+            <DiskID>0</DiskID>
+            <PartitionID>1</PartitionID>
+          </InstallTo>
+          <InstallToAvailablePartition>false</InstallToAvailablePartition>
+          <WillShowUI>OnError</WillShowUI>
+        </OSImage>
+      </ImageInstall>
       <UserData>
         <AcceptEula>true</AcceptEula>
         <FullName>Suriv</FullName>
@@ -43,39 +61,6 @@
           <WillShowUI>Never</WillShowUI>
         </ProductKey>
       </UserData>
-      <ImageInstall>
-        <OSImage>
-          <InstallTo>
-            <DiskID>0</DiskID>
-            <PartitionID>1</PartitionID>
-          </InstallTo>
-          <WillShowUI>OnError</WillShowUI>
-          <InstallToAvailablePartition>false</InstallToAvailablePartition>
-          <InstallFrom>
-            <MetaData wcm:action="add">
-              <Key>/IMAGE/NAME</Key>
-              <Value>Windows 7 PROFESSIONAL</Value>
-            </MetaData>
-          </InstallFrom>
-        </OSImage>
-      </ImageInstall>
-    </component>
-    <component
-      xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      name="Microsoft-Windows-International-Core-WinPE"
-      processorArchitecture="amd64"
-      publicKeyToken="31bf3856ad364e35"
-      language="neutral"
-      versionScope="nonSxS">
-      <SetupUILanguage>
-        <UILanguage>en-US</UILanguage>
-      </SetupUILanguage>
-      <InputLocale>en-US</InputLocale>
-      <SystemLocale>en-US</SystemLocale>
-      <UILanguage>en-US</UILanguage>
-      <UILanguageFallback>en-US</UILanguageFallback>
-      <UserLocale>en-US</UserLocale>
     </component>
   </settings>
   <settings pass="offlineServicing">
@@ -84,14 +69,7 @@
     </component>
   </settings>
   <settings pass="oobeSystem">
-    <component
-      xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      name="Microsoft-Windows-Shell-Setup"
-      processorArchitecture="amd64"
-      publicKeyToken="31bf3856ad364e35"
-      language="neutral"
-      versionScope="nonSxS">
+    <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <UserAccounts>
         <AdministratorPassword>
           <Value>surivHST</Value>
@@ -110,33 +88,33 @@
           </LocalAccount>
         </LocalAccounts>
       </UserAccounts>
+      <AutoLogon>
+        <Enabled>true</Enabled>
+        <Username>surivuser</Username>
+        <Password>
+          <Value>surivHST</Value>
+          <PlainText>true</PlainText>
+        </Password>
+      </AutoLogon>
       <OOBE>
         <HideEULAPage>true</HideEULAPage>
         <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
         <NetworkLocation>Home</NetworkLocation>
         <ProtectYourPC>1</ProtectYourPC>
       </OOBE>
-      <AutoLogon>
-        <Password>
-          <Value>surivHST</Value>
-          <PlainText>true</PlainText>
-        </Password>
-        <Username>surivuser</Username>
-        <Enabled>true</Enabled>
-      </AutoLogon>
       <FirstLogonCommands>
         <SynchronousCommand wcm:action="add">
-					<RequiresUserInput>false</RequiresUserInput>
-					<Order>1</Order>
-					<Description>Disable Auto Update</Description>
-					<CommandLine>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" /v AUOptions /t REG_DWORD /d 4 /f</CommandLine>
-				</SynchronousCommand>
+          <RequiresUserInput>false</RequiresUserInput>
+          <Order>1</Order>
+          <Description>Disable Auto Update</Description>
+          <CommandLine>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" /v AUOptions /t REG_DWORD /d 4 /f</CommandLine>
+        </SynchronousCommand>
         <SynchronousCommand wcm:action="add">
-					<RequiresUserInput>false</RequiresUserInput>
-					<Order>2</Order>
-					<Description>Configuration</Description>
-					<CommandLine>cmd.exe /c A:\config.bat</CommandLine>
-				</SynchronousCommand>
+          <RequiresUserInput>false</RequiresUserInput>
+          <Order>2</Order>
+          <Description>Configuration</Description>
+          <CommandLine>cmd.exe /c A:\config.bat</CommandLine>
+        </SynchronousCommand>
         <SynchronousCommand wcm:action="add">
           <Order>3</Order>
           <Description>Enable WinRM</Description>
@@ -155,14 +133,7 @@
       <TimeZone>Pacific Standard Time</TimeZone>
       <RegisteredOwner/>
     </component>
-    <component
-      xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      name="Microsoft-Windows-Security-SPP-UX"
-      processorArchitecture="amd64"
-      publicKeyToken="31bf3856ad364e35"
-      language="neutral"
-      versionScope="nonSxS">
+    <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Security-SPP-UX" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <SkipAutoActivation>true</SkipAutoActivation>
     </component>
   </settings>

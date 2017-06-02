@@ -1,7 +1,7 @@
 {
   "variables": {
-    "iso_checksum": "bc2f7ff5c91c9f0f8676e39e703085c65072139b",
-    "iso_url": "iso/en_windows_8_1_x64_dvd_2707217.iso"
+    "iso_checksum": "cfcdf895679a5116f7f1c6406c20f99a1f850e49",
+    "iso_url": "iso/en_windows_8_1_pro_vl_x64_dvd_2971948.iso"
   },
   "builders": [
     {
@@ -36,11 +36,13 @@
       "winrm_timeout": "15m",
       "guest_additions_mode": "disable",
       "virtualbox_version_file": "",
+      "output_directory": "win81x64pro-vbox",
       "keep_registered": "true",
       "floppy_files": [
         "floppy/win7x64pro/Autounattend.xml",
         "floppy/win7x64pro/winrm.ps1",
-        "floppy/win7x64pro/config.bat"
+        "floppy/win7x64pro/config.bat",
+        "floppy/win7x64pro/diskcleanup.bat"
       ]
     }
   ],
@@ -51,7 +53,8 @@
     {
       "type": "windows-shell",
       "inline": [
-        "Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
+        "dism /online /cleanup-image /startcomponentcleanup /resetbase",
+        "A:\\diskcleanup.bat",
         "shutdown /s"
       ]
     }
