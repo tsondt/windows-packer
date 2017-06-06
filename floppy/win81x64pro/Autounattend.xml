@@ -61,8 +61,11 @@
         <AcceptEula>true</AcceptEula>
         <FullName>Suriv</FullName>
         <Organization>Suriv</Organization>
+        <ProductKey>
+          <Key>GCRJD-8NW9H-F2CDX-CCM8D-9D6T9</Key>
+        </ProductKey>
       </UserData>
-      <EnableFirewall>false</EnableFirewall>
+      <!-- <EnableFirewall>false</EnableFirewall> -->
     </component>
   </settings>
   <settings pass="offlineServicing">
@@ -91,7 +94,6 @@
     </component>
     <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <ComputerName>Suriv</ComputerName>
-      <ProductKey>GCRJD-8NW9H-F2CDX-CCM8D-9D6T9</ProductKey>
     </component>
   </settings>
   <settings pass="oobeSystem">
@@ -105,7 +107,7 @@
             </Password>
             <Description>Suriv User</Description>
             <DisplayName>surivuser</DisplayName>
-            <Group>Administrators</Group>
+            <Group>administrators</Group>
             <Name>surivuser</Name>
           </LocalAccount>
         </LocalAccounts>
@@ -143,9 +145,9 @@
         <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
         <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
         <NetworkLocation>Home</NetworkLocation>
-        <ProtectYourPC>3</ProtectYourPC>
+        <ProtectYourPC>1</ProtectYourPC>
         <SkipUserOOBE>true</SkipUserOOBE>
-        <SkipMachineOOBE>true</SkipMachineOOBE>
+        <SkipMachineOOBE>false</SkipMachineOOBE>
       </OOBE>
       <TimeZone>Pacific Standard Time</TimeZone>
       <VisualEffects>

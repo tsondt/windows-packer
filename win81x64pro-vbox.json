@@ -1,7 +1,8 @@
 {
   "variables": {
-    "iso_checksum": "cfcdf895679a5116f7f1c6406c20f99a1f850e49",
-    "iso_url": "iso/en_windows_8_1_pro_vl_x64_dvd_2971948.iso"
+    "iso_checksum": "bc2f7ff5c91c9f0f8676e39e703085c65072139b",
+    "iso_url": "iso/en_windows_8_1_x64_dvd_2707217.iso",
+    "vm_name": "win81x64pro-sb"
   },
   "builders": [
     {
@@ -26,23 +27,24 @@
           "1"
         ]
       ],
-      "guest_os_type": "Windows81_64",
       "iso_url": "{{ user `iso_url` }}",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "sha1",
+      "guest_os_type": "Windows81_64",
+      "vm_name": "{{ user `vm_name` }}",
+      "guest_additions_mode": "disable",
       "communicator": "winrm",
       "winrm_username": "surivuser",
       "winrm_password": "surivHST",
-      "winrm_timeout": "15m",
-      "guest_additions_mode": "disable",
+      "winrm_timeout": "20m",
       "virtualbox_version_file": "",
       "output_directory": "win81x64pro-vbox",
       "keep_registered": "true",
       "floppy_files": [
-        "floppy/win7x64pro/Autounattend.xml",
-        "floppy/win7x64pro/winrm.ps1",
-        "floppy/win7x64pro/config.bat",
-        "floppy/win7x64pro/diskcleanup.bat"
+        "floppy/win81x64pro/Autounattend.xml",
+        "floppy/win81x64pro/winrm.ps1",
+        "floppy/win81x64pro/config.bat",
+        "floppy/win81x64pro/diskcleanup.bat"
       ]
     }
   ],

@@ -1,7 +1,8 @@
 {
   "variables": {
     "iso_checksum": "0bcfc54019ea175b1ee51f6d2b207a3d14dd2b58",
-    "iso_url": "iso/en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso"
+    "iso_url": "iso/en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso",
+    "vm_name": "win7x64pro-sb"
   },
   "builders": [
     {
@@ -26,15 +27,16 @@
           "1"
         ]
       ],
-      "guest_os_type": "Windows7_64",
       "iso_url": "{{ user `iso_url` }}",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "sha1",
+      "guest_os_type": "Windows7_64",
+      "vm_name": "{{ user `vm_name` }}",
+      "guest_additions_mode": "disable",
       "communicator": "winrm",
       "winrm_username": "surivuser",
       "winrm_password": "surivHST",
       "winrm_timeout": "15m",
-      "guest_additions_mode": "disable",
       "virtualbox_version_file": "",
       "output_directory": "win7x64pro-vbox",
       "keep_registered": "true",
