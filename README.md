@@ -11,3 +11,9 @@ Windows 7 Professional SP1
 Windows 8.1 Professional
   - ISO: `en_windows_8_1_x64_dvd_2707217.iso`
   - SHA1SUM: `bc2f7ff5c91c9f0f8676e39e703085c65072139b`
+
+## References
+- https://github.com/joefitzgerald/packer-windows
+- https://github.com/mwrock/packer-templates
+- https://hodgkins.io/best-practices-with-packer-and-windows
+- http://www.hurryupandwait.io/blog/in-search-of-a-light-weight-windows-vagrant-box
